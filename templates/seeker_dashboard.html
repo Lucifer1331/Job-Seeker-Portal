@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Seeker Dashboard{% endblock %}
+
+{% block content %}
+<h2>Seeker Dashboard</h2>
+<p>Welcome, {{username }}!</p>
+<p>Area: {{area }}</p>
+<a href="{{ url_for('seeker_bp.update_seeker') }}">Update Profile</a>
+<h3>Your Job Roles</h3>
+<ul>
+    {% for job_role in job_roles %}
+    <li>{{ job_role.campaign.name }} - {{ job_role.status }} 
+        <a href="{{ url_for('seeker_bp.view_job_roles', job_role_id=job_role.id) }}">View Details</a>
+    </li>
+    {% endfor %}
+</ul>
+<h3>Search Job Roles by area</h3>
+<form action="{{ url_for('seeker_bp.seeker_dashboard',user_id=user_id) }}" method="POST">
+    <input type="text" name="search_area" placeholder="Enter area" required>
+    <button type="submit">Search</button>
+</form>
+{% endblock %}

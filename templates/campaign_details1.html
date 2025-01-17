@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Campaign Details{% endblock %}
+
+{% block content %}
+<h2>Job Campaign Details</h2>
+<p><strong>Name:</strong> {{ campaign.name }}</p>
+<p><strong>Description:</strong> {{ campaign.description }}</p>
+<p><strong>Budget:</strong> {{ campaign.budget }}</p>
+<p><strong>Visibility:</strong> {{ campaign.visibility }}</p>
+<p><strong>company ID:</strong> {{ campaign.company_id }}</p>
+
+<h3>Job Roles</h3>
+<ul>
+    {% for job_role in job_roles %}
+    <li>
+        <p><strong>Request ID:</strong> {{ job_role.id }}</p>
+        <p><strong>Status:</strong> {{ job_role.status }}</p>
+        <p><strong>Details:</strong> {{ job_role.requirements }}</p>
+        <p><strong>Payment:</strong>{{job_role.payment_amount}}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

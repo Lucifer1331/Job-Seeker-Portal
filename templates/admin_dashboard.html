@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+<p>Welcome, Admin!</p>
+<h3>Statistics</h3>
+<ul>
+    <li>Active Users: {{ active_users }}</li>
+    <li>Total Job Campaigns: {{ total_campaigns }}</li>
+    <li>Public Job Campaigns: {{ public_campaigns }}</li>
+    <li>Private Job Campaigns: {{ private_campaigns }}</li>
+</ul>
+<h3>All Public Campaigns</h3>
+<ul>
+    {% for campaign in campaigns %}
+    <li>{{ campaign.name }} - {{ campaign.status }} <a href="{{ url_for('company_bp.campaign_details1', campaign_id=campaign.id) }}">View Details</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h2>Update seeker Profile</h2>
+
+<form  method="post">
+    <div>
+        <label for="area">area:</label>
+        <input type="text" id="area" name="area" value="{{ user.area }}" required>
+    </div>
+    <button type="submit">Update</button>
+</form>
+{% endblock %}

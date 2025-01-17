@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<h2>User Profile</h2>
+<form action="{{ url_for('auth_bp.userprofileseeker', user_id=user.id) }}" method="POST">
+    <div>
+        <label for="area">area:</label>
+        <input type="text" id="area" name="area" value="{{ user.area }}" required>
+    </div>
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

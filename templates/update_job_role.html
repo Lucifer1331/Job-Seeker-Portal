@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Job Role{% endblock %}
+
+{% block content %}
+<h2>Update Job Role</h2>
+
+<form action="{{ url_for('company_bp.update_job_role', job_role_id=job_role.id) }}" method="post">
+    <div>
+        <label for="details">Details:</label>
+        <textarea id="details" name="details" required>{{ job_role.details }}</textarea>
+    </div>
+    <div>
+        <label for="payment">Payment:</label>
+        <input type="number" id="payment" name="payment" step="0.01" value="{{ job_role.payment }}" required>
+    </div>
+    <div>
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="Pending" {% if job_role.status == 'Pending' %}selected{% endif %}>Pending</option>
+            <option value="Accepted" {% if job_role.status == 'Accepted' %}selected{% endif %}>Accepted</option>
+            <option value="Rejected" {% if job_role.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+            <option value="Negotiated" {% if job_role.status == 'Negotiated' %}selected{% endif %}>Negotiated</option>
+        </select>
+    </div>
+    <button type="submit">Update Job Role</button>
+</form>
+{% endblock %}

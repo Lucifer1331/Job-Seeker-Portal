@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>View Job Role</h2>
+<p>Company: {{user.username}}</p>
+<p>Job Campaign: {{ job_role.campaign.name }}</p>
+<p>Details: {{ job_role.requirements }}</p>
+<p>Payment: {{ job_role.payment_amount }}</p>
+<p>Status: {{ job_role.status }}</p>
+<form action="{{ url_for('seeker_bp.view_job_roles', job_role_id=job_role.id) }}" method="post">
+    <button type="submit" name="action" value="accept">Accept</button>
+    <button type="submit" name="action" value="reject">Reject</button>
+    <input type="number" name="new_payment" step="0.01" placeholder="New Payment">
+    <button type="submit" name="action" value="negotiate">Negotiate</button>
+</form>
+{% endblock %}

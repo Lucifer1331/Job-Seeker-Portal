@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}View All Campaigns{% endblock %}
+
+{% block content %}
+<h2>View All Job Campaigns</h2>
+<ul>
+    {% for campaign in campaigns %}
+    <li>{{ campaign.name }} - {{ campaign.visibility }} <a href="{{ url_for('company_bp.create_job_role', campaign_id=campaign.id) }}">View Details</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<h2>User Profile</h2>
+<form action="{{ url_for('auth_bp.userprofilecompany', user_id=user.id) }}" method="POST">
+    <div>
+        <label for="category">category:</label>
+        <input type="text" id="category" name="category" value="{{ user.category }}" required>
+    </div>
+    <div>
+        <label for="budget">Budget:</label>
+        <input type="number" id="budget" name="budget" value="{{ user.budget }}" required>
+    </div>
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

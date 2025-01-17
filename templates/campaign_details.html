@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Campaign Details{% endblock %}
+
+{% block content %}
+<h2>Job Campaign Details</h2>
+<p><strong>Name:</strong> {{ campaign.name }}</p>
+<p><strong>Description:</strong> {{ campaign.description }}</p>
+<p><strong>Budget:</strong> {{ campaign.budget }}</p>
+<p><strong>Visibility:</strong> {{ campaign.visibility }}</p>
+<p><strong>Company ID:</strong> {{ campaign.company_id }}</p>
+<h3>Job Roles</h3>
+<ul>
+    {% for job_role in job_roles %}
+    <li>
+        <p><strong>Request ID:</strong> {{ job_role.id }}</p>
+        <p><strong>Status:</strong> {{ job_role.status }}</p>
+        <p><strong>Details:</strong> {{ job_role.requirements }}</p>
+        <p><strong>Payment:</strong>{{job_role.payment_amount}}</p>
+        {{ job_role.details }} - {{ job_role.payment }} - {{ job_role.status }}
+        <form action="{{ url_for('company_bp.delete_job_role', job_role_id=job_role.id) }}" method="post" style="display:inline;">
+            <button type="submit" onclick="return confirm('Are you sure you want to delete this Job Role?');" ;>Delete</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+<p><a href="{{ url_for('company_bp.create_job_role', campaign_id=campaign.id) }}">Create Job Role</a></p>
+<a href="{{ url_for('company_bp.update_campaign', campaign_id=campaign.id) }}">Update Campaign</a>
+{% endblock %}
